@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryCraft</title>
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='logo.png') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-lg">
+            <div class="card-header bg-primary text-white text-center">
+                <h1 class="display-4">StoryCraft</h1>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="characters">Characters:</label>
+                    <input type="text" class="form-control" id="characters" placeholder="Enter characters">
+                </div>
+                <div class="form-group">
+                    <label for="setting">Setting:</label>
+                    <input type="text" class="form-control" id="setting" placeholder="Enter setting">
+                </div>
+                <div class="form-group">
+                    <label for="plot_twist">Plot Twist:</label>
+                    <input type="text" class="form-control" id="plot_twist" placeholder="Enter plot twist">
+                </div>
+                <button class="btn btn-primary btn-block" onclick="generateStory()">Generate Story</button>
+            </div>
+            <div class="card-footer bg-light">
+                <h2 class="text-center">Generated Story</h2>
+                <div id="story-output" class="p-3 border rounded bg-white"></div>
+            </div>
+        </div>
+    </div>
 
+    <script>
+        async function generateStory() {
+            const characters = document.getElementById('characters').value;
+            const setting = document.getElementById('setting').value;
+            const plot_twist = document.getElementById('plot_twist').value;
+
+            if (!characters || !setting || !plot_twist) {
+                alert("All fields must be filled out.");
+                return;
+            }
+
+            const response = await fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ characters, setting, plot_twist })
+            });
+            const data = await response.json();
+            document.getElementById('story-output').innerText = data.story;
+        }
+    </script>
+</body>
+</html>
