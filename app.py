@@ -4,7 +4,7 @@ from groq import Groq
 app = Flask(__name__)
 
 #Groq API key
-api_key = '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'
+api_key = ''
 client = Groq(api_key=api_key)
 
 def generate_story(characters, setting, plot_twist):
