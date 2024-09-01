@@ -1,0 +1,73 @@
+body {
+    background-image: url('background-image.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #414141 !important;
+    border-bottom: 5px solid #ffffff;
+    padding: 1.5rem;
+}
+
+.card-header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.card-body {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.card-footer {
+    padding: 2rem;
+    background: rgba(248, 249, 250, 0.9);
+}
+
+#story-output {
+    min-height: 150px;
+    white-space: pre-wrap;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+#story-output:hover {
+    background-color: #f8f9fa;
+    transform: scale(1.02);
+}
+
+.btn-primary {
+    background-color: #414141;
+    border-color: #ffffff;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #414141;
+    transform: translateY(-2px);
+}
+
+.form-control {
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 5px rgba(72, 74, 77, 0.5);
+}
+
+label {
+    font-weight: bold;
+}
